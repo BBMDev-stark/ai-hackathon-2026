@@ -1,0 +1,192 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-roboto-slab: 'Roboto Slab', serif;
+  --font-roboto: 'Roboto', system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-roboto), system-ui, sans-serif;
+  color: #475569;
+  background: #ffffff;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Typography ─────────────────────── */
+.display {
+  font-family: var(--font-roboto-slab), Georgia, serif;
+  letter-spacing: -0.02em;
+}
+
+.section-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #3B82F6;
+}
+
+/* ── Navigation ─────────────────────── */
+.nav-link {
+  position: relative;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; left: 0;
+  width: 0; height: 1.5px;
+  background: #3B82F6;
+  transition: width 0.25s ease;
+}
+.nav-link:hover::after { width: 100%; }
+
+/* ── Grid Background ────────────────── */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(59,130,246,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59,130,246,0.07) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+/* ── Cards ──────────────────────────── */
+.card-hover {
+  transition: transform 0.3s cubic-bezier(.22,.68,0,1.2), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 56px rgba(30,58,138,0.13);
+  border-color: rgba(59,130,246,0.35);
+}
+
+/* ── Animated gradient text ─────────── */
+.gradient-text {
+  background: linear-gradient(90deg, #93C5FD, #3B82F6, #A78BFA, #60A5FA);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
+
+/* ── Timeline connector ─────────────── */
+.timeline-connector {
+  position: absolute;
+  left: 17px; top: 44px; bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, #3B82F6 0%, rgba(59,130,246,0.08) 100%);
+}
+
+/* ── Evaluation bar ─────────────────── */
+.eval-bar {
+  height: 5px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #2563EB, #60A5FA);
+  transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Podium ─────────────────────────── */
+.podium-gold   { background: linear-gradient(135deg, #92400E, #D97706, #F59E0B); }
+.podium-silver { background: linear-gradient(135deg, #374151, #6B7280, #9CA3AF); }
+.podium-bronze { background: linear-gradient(135deg, #78350F, #B45309, #D97706); }
+
+/* ── Scroll reveal ──────────────────── */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+[data-reveal].revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+[data-reveal="right"] {
+  transform: translateX(32px);
+}
+[data-reveal="right"].revealed {
+  transform: translateX(0);
+}
+[data-reveal="scale"] {
+  transform: scale(0.93);
+}
+[data-reveal="scale"].revealed {
+  transform: scale(1);
+}
+
+/* ── Judge card image ───────────────── */
+.judge-photo {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 12px;
+  background: #e2e8f0;
+}
+
+/* ── Hero floating card ─────────────── */
+.hero-float-card {
+  backdrop-filter: blur(16px);
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 16px;
+}
+
+/* ── Glow button ────────────────────── */
+.btn-glow {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.btn-glow::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(90deg, #2563EB, #7C3AED, #2563EB);
+  background-size: 200% auto;
+  border-radius: inherit;
+  z-index: -1;
+  animation: shimmer 3s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.btn-glow:hover::before { opacity: 1; }
+
+/* ── Awards radial decoration ───────── */
+.award-shine {
+  position: relative;
+  overflow: hidden;
+}
+.award-shine::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 80px;
+  height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+}
+.award-shine:hover::after {
+  left: 130%;
+}
+
+/* ── Particle dots background ───────── */
+.dots-bg {
+  background-image: radial-gradient(circle, rgba(59,130,246,0.15) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* ── Section divider ────────────────── */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #E2E8F0, transparent);
+}
