@@ -16,10 +16,11 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-5">
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center"
-                style={{ background: 'linear-gradient(135deg, #1D4ED8, #3B82F6)' }}>
-                <span className="text-white text-[11px] font-bold">LHU</span>
-              </div>
+              <img
+  src="https://learn.lhu.edu.vn/pluginfile.php/1/theme_space/customlogosidebar/1731635809/rsz_1logo_dung_en_1_.png"
+  alt="LHU Logo"
+  className="w-10 h-10 rounded-xl object-contain"
+/>
               <div>
                 <p className="text-[10px] text-white/30 leading-none">Trường Đại học Lạc Hồng</p>
                 <p className="text-[12px] font-semibold text-white/80">Khoa Công nghệ Thông tin</p>
@@ -59,7 +60,8 @@ export default function Footer() {
               </div>
               <div className="flex items-start gap-3">
                 <svg className="mt-0.5 shrink-0 text-white/25" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path strokeLinecap="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
                 <p className="text-[13px] text-white/40 leading-relaxed">
                   Hội trường B203,<br />Trường Đại học Lạc Hồng, Đồng Nai
