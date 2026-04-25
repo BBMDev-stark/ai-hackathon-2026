@@ -125,7 +125,7 @@ function CountBox({ val, label }: { val: number; label: string }) {
 }
 
 export default function Hero() {
-  const deadline = new Date("2026-04-30T23:59:59");
+  const deadline = new Date("2026-05-03T23:59:59");
   const time = useCountdown(deadline);
   const leftRef = useRef<HTMLDivElement>(null);
 
@@ -200,7 +200,7 @@ export default function Hero() {
 
             <div className="mb-10">
               <p className="text-[10px] uppercase tracking-widest text-white/25 font-bold mb-3">
-                Đếm ngược đến hạn đăng ký — 30/04/2026
+                Đếm ngược đến hạn đăng ký — 03/05/2026
               </p>
               <div className="flex gap-3">
                 <CountBox val={time.days} label="Ngày" />
