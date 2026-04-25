@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
+import HeroVisual from "./HeroVisual";
 
 const REGISTER_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeotO9ptxV8cUh04oTAq6zhPSLet8-BtOv1-5tGetS_QPHP3w/viewform";
 
@@ -52,7 +53,6 @@ function AnimatedBg() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       t += 0.003;
 
-      // Aurora blobs
       const blobs = [
         { x: canvas.width * 0.25 + Math.sin(t * 0.7) * 90, y: canvas.height * 0.35 + Math.cos(t * 0.5) * 70, r: 420, c: "rgba(29,78,216,0.13)" },
         { x: canvas.width * 0.78 + Math.cos(t * 0.55) * 110, y: canvas.height * 0.25 + Math.sin(t * 0.4) * 80, r: 360, c: "rgba(6,182,212,0.09)" },
@@ -69,7 +69,6 @@ function AnimatedBg() {
         ctx.fill();
       });
 
-      // Subtle grid
       ctx.strokeStyle = "rgba(59,130,246,0.035)";
       ctx.lineWidth = 1;
       for (let x = 0; x < canvas.width; x += 64) {
@@ -79,7 +78,6 @@ function AnimatedBg() {
         ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke();
       }
 
-      // Particles + constellation lines
       particles.forEach((p) => {
         p.x += p.vx; p.y += p.vy;
         if (p.x < 0) p.x = canvas.width;
@@ -126,27 +124,19 @@ function CountBox({ val, label }: { val: number; label: string }) {
   );
 }
 
-function FloatingCard({ delay, className, children }: { delay?: string; className?: string; children: React.ReactNode }) {
-  return (
-    <div className={`hero-float-card p-4 ${className ?? ""}`} style={{ animationDelay: delay }}>
-      {children}
-    </div>
-  );
-}
-
 export default function Hero() {
   const deadline = new Date("2026-04-30T23:59:59");
   const time = useCountdown(deadline);
   const leftRef = useRef<HTMLDivElement>(null);
-  const rightRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const els = [leftRef.current, rightRef.current];
+    const el = leftRef.current;
+    if (!el) return;
     const observer = new IntersectionObserver(
       (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("revealed"); }),
       { threshold: 0.1 }
     );
-    els.forEach((el) => el && observer.observe(el));
+    observer.observe(el);
     return () => observer.disconnect();
   }, []);
 
@@ -156,13 +146,10 @@ export default function Hero() {
       className="relative min-h-screen flex items-center overflow-hidden"
       style={{ background: "linear-gradient(150deg, #030B18 0%, #060E1E 45%, #0D1B30 100%)" }}
     >
-      {/* ── Canvas animated background ── */}
       <AnimatedBg />
 
-      {/* Animated grid overlay (existing) */}
       <div className="absolute inset-0 grid-bg pointer-events-none opacity-30" />
 
-      {/* Glow orbs */}
       <div aria-hidden className="absolute top-[-10%] right-[-5%] w-[800px] h-[800px] rounded-full pointer-events-none"
         style={{ background: "radial-gradient(circle, rgba(37,99,235,0.2) 0%, transparent 65%)" }} />
       <div aria-hidden className="absolute bottom-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full pointer-events-none"
@@ -170,7 +157,6 @@ export default function Hero() {
       <div aria-hidden className="absolute top-[40%] left-[35%] w-[500px] h-[500px] rounded-full pointer-events-none"
         style={{ background: "radial-gradient(circle, rgba(59,130,246,0.07) 0%, transparent 65%)" }} />
 
-      {/* Vertical accent line */}
       <div aria-hidden className="absolute top-0 right-[28%] w-px h-full pointer-events-none"
         style={{ background: "linear-gradient(180deg, transparent 0%, rgba(59,130,246,0.18) 35%, rgba(59,130,246,0.18) 65%, transparent 100%)" }} />
 
@@ -252,71 +238,8 @@ export default function Hero() {
           </div>
 
           {/* ── RIGHT ── */}
-          <div ref={rightRef} data-reveal="right" className="hidden lg:flex flex-col items-center relative">
-            <div className="relative w-full max-w-[440px] mx-auto">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-white/10"
-                style={{ background: "linear-gradient(135deg, #1D4ED8 0%, #7C3AED 60%, #0EA5E9 100%)" }}>
-                <div className="relative w-full h-[380px] flex flex-col items-center justify-center">
-                  <div className="absolute inset-0 grid-bg opacity-40" />
-                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                    <div className="w-[360px] h-[360px] rounded-full border border-white/8 absolute" />
-                    <div className="w-[260px] h-[260px] rounded-full border border-white/10 absolute" />
-                    <div className="w-[160px] h-[160px] rounded-full border border-white/15 absolute" />
-                  </div>
-                  <div className="relative z-10 flex flex-col items-center">
-                    <div className="w-20 h-20 rounded-2xl bg-white/15 border border-white/25 flex items-center justify-center mb-4 backdrop-blur-sm shadow-xl"
-                      style={{ animation: "float 6s ease-in-out infinite" }}>
-                      <svg width="40" height="40" fill="none" stroke="white" strokeWidth="1.5" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                      </svg>
-                    </div>
-                    <p className="text-white font-black text-2xl tracking-tight display">AI Discovery</p>
-                    <p className="text-white/50 text-sm mt-1">Hackathon 2026</p>
-                  </div>
-                  {[
-                    { label: "Prompt Engineering", top: "12%", left: "5%", delay: "0s" },
-                    { label: "Machine Learning", top: "20%", right: "4%", delay: "1.5s" },
-                    { label: "AI Prototype", bottom: "22%", left: "4%", delay: "0.8s" },
-                    { label: "Pitching & Demo", bottom: "14%", right: "4%", delay: "2s" },
-                  ].map((b) => (
-                    <div key={b.label}
-                      className="absolute px-3 py-1.5 rounded-full text-[11px] font-semibold text-white/80 bg-white/10 border border-white/20 backdrop-blur-sm"
-                      style={{ top: b.top, left: b.left, right: b.right, bottom: b.bottom, animation: "float 7s ease-in-out infinite", animationDelay: b.delay }}>
-                      {b.label}
-                    </div>
-                  ))}
-                </div>
-              </div>
+          <HeroVisual />
 
-              <FloatingCard className="absolute -left-10 top-10 flex items-center gap-3" delay="0s">
-                <div className="w-10 h-10 rounded-xl bg-azure-600/60 flex items-center justify-center">
-                  <svg width="18" height="18" fill="none" stroke="white" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                </div>
-                <div><p className="text-white font-bold text-lg display leading-none">8 giờ</p><p className="text-white/45 text-[11px] mt-0.5">Thi Hackathon</p></div>
-              </FloatingCard>
-
-              <FloatingCard className="absolute -right-10 top-[30%] flex items-center gap-3" delay="1s">
-                <div className="w-10 h-10 rounded-xl bg-violet-600/60 flex items-center justify-center">
-                  <svg width="18" height="18" fill="none" stroke="white" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                </div>
-                <div><p className="text-white font-bold text-lg display leading-none">Top 10</p><p className="text-white/45 text-[11px] mt-0.5">Đội chung kết</p></div>
-              </FloatingCard>
-
-              <FloatingCard className="absolute -left-8 bottom-8 flex items-center gap-3" delay="0.5s">
-                <div className="w-10 h-10 rounded-xl bg-emerald-600/60 flex items-center justify-center">
-                  <svg width="18" height="18" fill="none" stroke="white" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                </div>
-                <div><p className="text-white font-bold text-lg display leading-none">6.8 Tr</p><p className="text-white/45 text-[11px] mt-0.5">Giải thưởng</p></div>
-              </FloatingCard>
-
-              <FloatingCard className="absolute -right-8 bottom-6 flex items-center gap-3" delay="1.5s">
-                <div className="w-10 h-10 rounded-xl bg-amber-600/60 flex items-center justify-center">
-                  <svg width="18" height="18" fill="none" stroke="white" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                </div>
-                <div><p className="text-white font-bold text-lg display leading-none">3 chủ đề</p><p className="text-white/45 text-[11px] mt-0.5">Lĩnh vực thi</p></div>
-              </FloatingCard>
-            </div>
-          </div>
         </div>
       </div>
 

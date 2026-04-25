@@ -93,7 +93,7 @@ export default function Judges() {
   const [lead, rest] = [judges[0], judges.slice(1)]
 
   return (
-    <section id="judges" className="py-24 bg-white" ref={sectionRef}>
+    <section id="judges" className="hidden py-24 bg-white" ref={sectionRef}>
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         {/* Header */}
         <div className="mb-16" data-reveal>
