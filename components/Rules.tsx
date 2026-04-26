@@ -67,7 +67,7 @@ export default function Rules() {
                 'Cá nhân hoặc đội thi',
                 'Tối đa 3 thành viên/đội',
                 'Học sinh THPT lớp 11, 12 tỉnh Đồng Nai & lân cận',
-                'Sinh viên LHU quan tâm đến AI và công nghệ số',
+                'Sinh viên LHU năm nhất, năm hai quan tâm đến AI và công nghệ số',
                 'Đăng ký qua Google Form của Ban Tổ chức',
               ].map((p) => (
                 <li key={p} className="flex items-start gap-2.5 text-[13px] text-slate-600">

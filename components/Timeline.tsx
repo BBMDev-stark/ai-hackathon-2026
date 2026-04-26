@@ -36,7 +36,7 @@ const phase1: TItem[] = [
     badgeColor: 'bg-violet-100 text-violet-700',
   },
   {
-    date: '10/05/2026',
+    date: '20/05/2026',
     title: 'Nộp bài & Công bố Top 10',
     desc: 'Hội đồng giám khảo chấm điểm, công bố 10 đội xuất sắc vào chung kết.',
     badge: 'Kết quả',
@@ -46,28 +46,28 @@ const phase1: TItem[] = [
 
 const phase2: TItem[] = [
   {
-    date: 'Sáng 16/05',
+    date: 'Sáng 29/05',
     title: 'Khai mạc & Nhận đề Hackathon',
     desc: 'Lễ khai mạc, giới thiệu Ban Giám khảo, BGK công bố chủ đề chính thức và bốc thăm vị trí.',
     badge: 'Khai mạc',
     badgeColor: 'bg-sky-100 text-sky-700',
   },
   {
-    date: 'Sáng 16/05',
+    date: 'Sáng 29/05',
     title: 'Hackathon — 4 giờ thi đấu',
     desc: 'Các đội thực hiện thử thách theo chủ đề, được sử dụng công cụ AI theo quy định BTC.',
     badge: 'Thi đấu',
     badgeColor: 'bg-orange-100 text-orange-700',
   },
   {
-    date: 'Chiều 16/05',
+    date: 'Chiều 29/05',
     title: 'Pitching & Phản biện',
     desc: 'Trình bày sản phẩm 5–7 phút/đội, hội đồng đặt câu hỏi phản biện.',
     badge: 'Demo',
     badgeColor: 'bg-yellow-100 text-yellow-700',
   },
   {
-    date: 'Chiều 16/05',
+    date: 'Chiều 29/05',
     title: 'Trao giải & Bế mạc',
     desc: 'Công bố kết quả, trao giải và cấp Giấy chứng nhận tham gia cho tất cả thí sinh.',
     badge: 'Trao giải',
@@ -133,7 +133,7 @@ export default function Timeline() {
                   <p className="text-[11px] text-slate-400 mt-0.5">Khám phá & Ý tưởng</p>
                 </div>
               </div>
-              <span className="text-[11px] text-slate-400 bg-slate-100 px-2.5 py-1 rounded-full font-medium">23/04 – 10/05</span>
+              <span className="text-[11px] text-slate-400 bg-slate-100 px-2.5 py-1 rounded-full font-medium">23/04 – 20/05</span>
             </div>
             <PhaseList items={phase1} />
           </div>
@@ -152,7 +152,7 @@ export default function Timeline() {
                   <p className="text-[11px] text-slate-400 mt-0.5">Hackathon Offline</p>
                 </div>
               </div>
-              <span className="text-[11px] text-slate-400 bg-slate-100 px-2.5 py-1 rounded-full font-medium">16/05/2026</span>
+              <span className="text-[11px] text-slate-400 bg-slate-100 px-2.5 py-1 rounded-full font-medium">29/05/2026</span>
             </div>
             <PhaseList items={phase2} />
             <div className="flex items-center gap-2 p-3 bg-azure-50 rounded-xl border border-azure-100">
