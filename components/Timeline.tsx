@@ -8,7 +8,7 @@ type TItem = {
 
 const phase1: TItem[] = [
   {
-    date: '23/04 – 30/04',
+    date: '06/05 - 10/05',
     title: 'Mở đăng ký trực tuyến',
     desc: 'Đăng ký qua Google Form, phổ biến thể lệ và tiêu chí chấm điểm.',
     badge: 'Đăng ký',
