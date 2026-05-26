@@ -20,19 +20,19 @@ const rounds = [
             desc: "Đăng ký qua Google Form. Ban tổ chức phổ biến thể lệ, tiêu chí chấm điểm và hướng dẫn nộp bài.",
           },
           {
-            date: "07/05",
+            date: "25/05",
             label: "Workshop Buổi 1 — Nhập môn AI",
             desc: "Giới thiệu tổng quan về Trí tuệ Nhân tạo và kỹ thuật Prompt Engineering cơ bản.",
             badge: "Prompt Master",
           },
           {
-            date: "09/05",
+            date: "26/05",
             label: "Workshop Buổi 2 — AI & Truyền thông",
             desc: "Ứng dụng AI trong truyền thông và sáng tạo nội dung đa phương tiện.",
             badge: "Prompt Master",
           },
           {
-            date: "13/05",
+            date: "27/05",
             label: "Workshop Buổi 3 — Prototype & Pitching",
             desc: "Thực hành xây dựng Prototype AI và rèn luyện kỹ năng thuyết trình chuyên nghiệp.",
             badge: "Prompt Master",
